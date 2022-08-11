@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+div{
+  background-color:red;
+  width:50rem;
+  height:50rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+table{
+
+  width:45rem;
+  height:35rem;
+  background-color:pink;
+}
+tr{
+  background-color:orange;
+}
+td{
+  padding:1em;
+  /* background-color:blue; */
+}
+    </style>
+</head>
+<body>
+<script>
+  var testArr = 
+    [{name:"ali",
+     lastName:"alizade",
+     tel:123,
+     age:45},
+     
+     {name:"reza",
+     lastName:"rezaeee",
+     tel:458,
+     age:25},
+     
+     {name:"danial",
+     lastName:"akbari",
+     tel:987,
+     age:17}];
+
+  tableCreator = (myArr) => {
+    var counter=0;
+    var keys = Object.keys(myArr[0]);
+    // console.log(keys.length);
+
+    var div = document.createElement('div');
+    document.body.append(div);
+
+    var table = document.createElement('table');
+    div.append(table);
+
+    for(var c=0;c<=myArr.length;c++){
+        counter=0;
+      var row = document.createElement('tr');
+      table.append(row);
+
+      for(var c1=0;c1<keys.length;c1++){
+        if(counter>3){
+            break;
+        }
+        if(c===0){
+          var header = document.createElement('th');
+          table.append(header);
+        //   header.append("header"); // toggle me on and off to undrestand better
+          header.append(keys[c1]);
+        }
+        else{
+        for(let c2=0;c2<keys.length;c2++){
+        var cell = document.createElement('td');
+        table.append(cell);
+        let vals = Object.values(myArr[c-1]);
+        console.log(vals);
+        cell.append(vals[c2]);
+        counter++; 
+                }
+            }
+        }
+    }
+  }
+  tableCreator(testArr);
+</script>
+</body>
+</html>
